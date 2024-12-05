@@ -11,6 +11,10 @@ export class Boss{
                 alert("Monstre mort");
             }
         }
+        this.attaquer =(cible) => {
+            cible.subir(this.attaque);
+        }
+
         
     }
 }
