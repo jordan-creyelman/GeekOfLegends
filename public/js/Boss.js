@@ -11,5 +11,6 @@ export class Boss{
                 alert("Monstre mort");
             }
         }
+        
     }
 }
