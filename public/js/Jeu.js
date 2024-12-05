@@ -23,7 +23,7 @@ export class Jeu {
         }
         while (true) {
             let posture = prompt(`Entrez la posture du ${type}:`);
-            if (posture  === 'string' && posture == "défense " || posture == "attaque") {
+            if (posture == "défense" || posture == "attaque") {
                 alert("Vous avez entré une chaîne de caractères valide.");
                 break;
             } else {
@@ -33,14 +33,27 @@ export class Jeu {
        
         
         let attaque;
-        do {
-            attaque = parseInt(prompt(`Entrez les points d'attaque du ${type}:`));
-        } while (!isInteger(attaque));
+        while (true) {
+            attaque = prompt(`Entrez les points d'attaque du ${type}:`);
+            if (!isNaN(attaque) && parseInt(attaque) == attaque && !isNaN(parseInt(attaque, 10))) {
+                attaque = parseInt(attaque);
+                break;
+            } else {
+                alert("Tapper un nombre ");
+            }
+        }
         
         let vie;
-        do {
-            vie = parseInt(prompt(`Entrez la vie du ${type}:`));
-} while (!isInteger(vie));
+        while (true) {
+            vie = prompt(`Entrez les points de vie du ${type}:`);
+            if (!isNaN(vie) && parseInt(vie) == vie && !isNaN(parseInt(vie, 10))) {
+                vie = parseInt(vie);
+                break;
+            } else {
+                alert("Tapper un nombre ");
+            }
+        }
+        
         let personnage;
         switch (type) {
             case 'Mage':
