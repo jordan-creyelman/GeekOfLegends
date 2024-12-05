@@ -5,7 +5,6 @@ export class Boss{
         this.vie = vie;
         this.vieMax = vie;
 
-
         this.enigmes = [
             { question: "Quel est le plus grand océan du monde ?", reponse: "Pacifique" },
             { question: "Quelle est la capitale de la France ?", reponse: "Paris" },

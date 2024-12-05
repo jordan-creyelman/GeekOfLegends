@@ -1,3 +1,4 @@
+// Jeu.js
 import { Mage } from './Mage.js';
 import { Guerrier } from './Guerrier.js';
 import { Archer } from './Archer.js';
@@ -10,69 +11,23 @@ export class Jeu {
     }
 
     creerPersonnage(type) {
-        let nom = '';
-        let posture = '';
-        let attaque = 0;
-        let vie = 0;
-
-        while (!nom) {
-            nom = prompt(`Entrez le nom du ${type}:`);
-            if (!nom) {
-                alert("Le nom ne peut pas être vide.");
-            }
-        }
-
-        while (!posture) {
-            posture = prompt(`Entrez la posture du ${type}:`);
-            if (!posture) {
-                alert("La posture ne peut pas être vide.");
-            }
-        }
-
-        while (isNaN(attaque) || attaque <= 0) {
-            attaque = parseInt(prompt(`Entrez les points d'attaque du ${type}:`));
-            if (isNaN(attaque) || attaque <= 0) {
-                alert("Les points d'attaque doivent être un nombre positif.");
-            }
-        }
-
-        while (isNaN(vie) || vie <= 0) {
-            vie = parseInt(prompt(`Entrez la vie du ${type}:`));
-            if (isNaN(vie) || vie <= 0) {
-                alert("La vie doit être un nombre positif.");
-            }
-        }
+        let nom = prompt(`Entrez le nom du ${type}:`);
+        let posture = prompt(`Entrez la posture du ${type}:`);
+        let attaque = parseInt(prompt(`Entrez les points d'attaque du ${type}:`));
+        let vie = parseInt(prompt(`Entrez la vie du ${type}:`));
 
         let personnage;
         switch (type) {
             case 'Mage':
-                let mana = 0;
-                while (isNaN(mana) || mana <= 0) {
-                    mana = parseInt(prompt(`Entrez la mana du ${type}:`));
-                    if (isNaN(mana) || mana <= 0) {
-                        alert("La mana doit être un nombre positif.");
-                    }
-                }
+                let mana = parseInt(prompt(`Entrez la mana du ${type}:`));
                 personnage = new Mage(nom, posture, attaque, vie, mana);
                 break;
             case 'Archer':
-                let fleches = 0;
-                while (isNaN(fleches) || fleches <= 0) {
-                    fleches = parseInt(prompt(`Entrez le nombre de flèches du ${type}:`));
-                    if (isNaN(fleches) || fleches <= 0) {
-                        alert("Le nombre de flèches doit être un nombre positif.");
-                    }
-                }
+                let fleches = parseInt(prompt(`Entrez le nombre de flèches du ${type}:`));
                 personnage = new Archer(nom, posture, attaque, vie, fleches);
                 break;
             case 'Guerrier':
-                let rage = 0;
-                while (isNaN(rage) || rage <= 0) {
-                    rage = parseInt(prompt(`Entrez les points de rage du ${type}:`));
-                    if (isNaN(rage) || rage <= 0) {
-                        alert("Les points de rage doivent être un nombre positif.");
-                    }
-                }
+                let rage = parseInt(prompt(`Entrez les points de rage du ${type}:`));
                 personnage = new Guerrier(nom, posture, attaque, vie, rage);
                 break;
             default:
@@ -164,13 +119,7 @@ export class Jeu {
 
             for (let personnage of this.personnages) {
                 if (personnage.vie > 0) {
-                    let nouvellePosture = '';
-                    while (!nouvellePosture) {
-                        nouvellePosture = prompt(`Changer la posture de ${personnage.nom} (actuelle: ${personnage.posture}):`);
-                        if (!nouvellePosture) {
-                            alert("La posture ne peut pas être vide.");
-                        }
-                    }
+                    let nouvellePosture = prompt(`Changer la posture de ${personnage.nom} (actuelle: ${personnage.posture}):`);
                     personnage.posture = nouvellePosture;
                 }
             }
