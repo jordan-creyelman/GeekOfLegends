@@ -1,3 +1,4 @@
+// Jeu.js
 import { Mage } from './Mage.js';
 import { Guerrier } from './Guerrier.js';
 import { Archer } from './Archer.js';
@@ -10,20 +11,18 @@ export class Jeu {
     }
 
     creerPersonnage(type) {
-        let nom, posture, attaque, vie, element;
-
+        
         while (true) {
-            nom = prompt(`Entrez le nom du ${type}:`);
+            let nom = prompt(`Entrez le nom du ${type}:`);
             if (typeof nom == 'string') {
                 alert("Vous avez entré une chaîne de caractères valide.");
-                break;
+             break;
             } else {
                 alert("Ce n'est pas une chaîne de caractères. Veuillez réessayer.");
             }
         }
-
         while (true) {
-            posture = prompt(`Entrez la posture du ${type}:`);
+            let posture = prompt(`Entrez la posture du ${type}:`);
             if (posture == "défense" || posture == "attaque") {
                 alert("Vous avez entré une chaîne de caractères valide.");
                 break;
@@ -31,7 +30,9 @@ export class Jeu {
                 alert("Ce n'est pas une chaîne de caractères. Veuillez réessayer.");
             }
         }
-
+       
+        
+        let attaque;
         while (true) {
             attaque = prompt(`Entrez les points d'attaque du ${type}:`);
             if (!isNaN(attaque) && parseInt(attaque) == attaque && !isNaN(parseInt(attaque, 10))) {
@@ -41,7 +42,8 @@ export class Jeu {
                 alert("Tapper un nombre ");
             }
         }
-
+        
+        let vie;
         while (true) {
             vie = prompt(`Entrez les points de vie du ${type}:`);
             if (!isNaN(vie) && parseInt(vie) == vie && !isNaN(parseInt(vie, 10))) {
@@ -51,20 +53,12 @@ export class Jeu {
                 alert("Tapper un nombre ");
             }
         }
-
+        
         let personnage;
         switch (type) {
             case 'Mage':
                 let mana = parseInt(prompt(`Entrez la mana du ${type}:`));
-                while (true) {
-                    element = prompt(`Choisissez l'élément du ${type} (Feu, Terre, Eau):`);
-                    if (['Feu', 'Terre', 'Eau'].includes(element)) {
-                        break;
-                    } else {
-                        alert("Choisissez un élément valide (Feu, Terre, Eau).");
-                    }
-                }
-                personnage = new Mage(nom, posture, attaque, vie, mana, element);
+                personnage = new Mage(nom, posture, attaque, vie, mana);
                 break;
             case 'Archer':
                 let fleches = parseInt(prompt(`Entrez le nombre de flèches du ${type}:`));
